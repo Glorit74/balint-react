@@ -1,3 +1,39 @@
 body {
   background-color: rgb(201, 201, 110);
 }
+
+.menuContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.menu {
+  width: 250px;
+  background-color: azure;
+  margin: 15px;
+  padding: 15px;
+}
+
+.pizzaName {
+  width: 228px;
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 2px solid orange;
+  border-bottom: 3px solid orangered;
+  background-color: blanchedalmond;
+}
+img {
+  width: 234px;
+  border: 2px solid orange;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+spam {
+  font-weight: 700;
+}
+
+.topping {
+  font-size: 18px;
+}
