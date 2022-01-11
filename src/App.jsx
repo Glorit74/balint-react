@@ -30,7 +30,8 @@ const toggleText = () => {
 const App = () => {
 
  let [pages, setPages] = useState(true);
- const [text, setText] = useState('');
+ const [text, setText] = useState('Home');
+ const [pageName, setPageName] = useState('Home');
 
  const togglePage = () => {
    setPages(!pages);
@@ -62,6 +63,14 @@ const App = () => {
     <button onClick={() => setText(<div>Landing</div>)}>Landing</button>    
     <button onClick={() => setText(<div>About</div>)}>About</button>
     {text}
+
+    <button style={{backgroundColor:'lightgreen'}} onClick={() => setPageName("Home2")}>Home</button>    
+    <button style={{backgroundColor:'lightgreen'}} onClick={() => setPageName("Lending")}>Lending</button>    
+    <button style={{backgroundColor:'lightgreen'}} onClick={() => setPageName("About")}>About</button>    
+
+    {pageName === 'Home2' && <div>Text is here</div>}
+    {pageName === 'Lending' && <div><button>Click here</button></div>}
+    {pageName === 'About' && <div><input type ='text' placeholder = 'Text is here'/></div>}
   </div>  
   );
 }
