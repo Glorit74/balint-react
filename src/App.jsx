@@ -1,71 +1,68 @@
-const carName = 'Opel'
-const carNumber = 125
-const isCar = true
-const cars = ['Opel', 'BMW', 12, 'Volvo', false]
-const man = {
-  fisrtName: 'Joe',
-  lastName: 'Smith'
-}
-const nullVariable = null
-let udVar = undefined
-const myFv = () => {
-  return 'Hello'
+import { useState } from "react";
+
+let isHomePage = true;
+let isHome = true;
+
+const onClick = () => {
+  console.log(isHomePage,);
+  isHomePage = !isHomePage
+  console.log(isHomePage);
 }
 
-const carList = [
-  {carName: 'Opel', doorNumber: 4},
-  {carName: 'Skoda', doorNumber: 4},
-  {carName: 'Mercedes', doorNumber: 4},
-  {carName: 'BMW', doorNumber: 5},
-  {carName: 'Trabant', doorNumber: 4}
-]
+let page;
 
+ if (isHomePage) {page = <main>HomePage</main>;}
+ else {page = <div>LandingPage</div>;}
 
+/* const PageChange = () => {  
+
+  if (isHomePage) {
+    return <main>Home Page</main>;
+  } else {
+    return <div>Landing Page</div>
+  }
+}  Ez is egy lehetséges megoldás, componens létrehozásával*/
+
+const toggleText = () => {
+  console.log('click');
+}
 
 const App = () => {
+
+ let [pages, setPages] = useState(true);
+ const [text, setText] = useState('');
+
+ const togglePage = () => {
+   setPages(!pages);
+  //  console.log(`New page': ${isHome}`);
+ };
+
+//  const [texes, setText] = useState('About')
   return (
     <div>
-      <h1>Hello World</h1>
-      <p className="par">Ez egy <br /> szöveg</p>
-      <p>{cars}</p>
-      <p>{man.fisrtName} {nullVariable} {udVar}</p>
-      {myFv()}
-      <div id="egyedi">Ez egy autó {carName} {carNumber + 10} {isCar}</div>
-      <input type="password" placeholder='minta.jozsi@gmail.com'/>
+      <p>Hello World</p>
+      <div>
+          
+      </div>
+          <button onClick={onClick}>if click</button>
+          {page}
+          
+          {/* <button onClick={togglePage}>set Click</button> */}
+          <button onClick={() => setPages(!pages)}>set Click</button>
+          {
+            pages ?
+              <div>Home</div> :
+              <div>Landing</div>
+          }
 
-      <div className="carBrand">
-        <p>Marka:</p>
-        <p><em>Opel</em></p>
-        <p>Ajtók száma: 4</p>
-      </div>
-      <div className="carBrand">
-        <p>Marka:</p>
-        <p><em>Volvo</em></p>
-        <p>Ajtók száma: 5</p>
-      </div>
-      <div className="carBrand">
-        <p>Marka:</p>
-        <p><em>Trabant</em></p>
-        <p>Ajtók száma: 4</p>
-      </div>
-      <div className="carBrand">
-        <p>Marka:</p>
-        <p><em>Skoda</em></p>
-        <p>Ajtók száma: 4</p>
-      </div>
+{/*<PageChange />  component megoldás meghívása*/}    
+    
 
-      {
-        carList.map((c) => 
-        (
-           <div key={c.carName} className={c.doorNumber === 5 ? 'carBrand' : 'carBrand2'} >
-               <p>Marka:</p>
-               <p><em>{c.carName}</em></p>
-               <p>Ajtók száma: {c.doorNumber<5 ? c.doorNumber : 'Not valid'}</p>
-             </div>
-         )
-       )
-      }
-    </div>
+    <button onClick={() => setText(<div>Home</div>)}>Home</button>    
+    <button onClick={() => setText(<div>Landing</div>)}>Landing</button>    
+    <button onClick={() => setText(<div>About</div>)}>About</button>
+    {text}
+  </div>  
   );
 }
 
